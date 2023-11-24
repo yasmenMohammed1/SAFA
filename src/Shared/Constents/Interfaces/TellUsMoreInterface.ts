@@ -1,7 +1,12 @@
 export interface TellUsMore {
-  full_name: string;
-  business_email: string;
-  phone_number: string;
-  password: string;
-  confirm_password: string;
+  user_full_name: string;
+  company_business_email: string;
+  user_phone: string;
+  user_password: string;
+  user_password_confirmation: string;
+  company_country_id: {
+    code: string;
+    label: string;
+    phone: string;
+  };
 }

@@ -13,6 +13,7 @@ import StepConnector, {
 } from "@mui/material/StepConnector";
 
 import { StepIconProps } from "@mui/material/StepIcon";
+import { StepsTitles } from "../Constents/StepsTitles";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -92,13 +93,6 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = [
-  "Tell Us More About You",
-  "Verify your company",
-  "Upload Company Logo",
-  "You're all set",
-];
-
 export default function CustomizedSteppers({ step }: { step: number }) {
   return (
     <Stepper
@@ -107,7 +101,7 @@ export default function CustomizedSteppers({ step }: { step: number }) {
       activeStep={step}
       connector={<ColorlibConnector />}
     >
-      {steps.map((label) => (
+      {StepsTitles.map((label) => (
         <Step key={label}>
           <StepLabel StepIconComponent={ColorlibStepIcon}></StepLabel>
         </Step>

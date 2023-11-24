@@ -1,15 +1,21 @@
 export interface CompanyVerification {
   company_name: string;
-  business_email: string;
-  phone_number: string;
-  city: {
+  company_business_email: string;
+  company_address: string;
+  company_phone: string;
+  company_city_id: {
     code: string;
     label: string;
     phone: string;
   };
-  country: {
+  company_country_id: {
     code: string;
     label: string;
     phone: string;
+  };
+
+  lang: {
+    code: string;
+    label: string;
   };
 }

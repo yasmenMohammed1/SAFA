@@ -1,3 +1,4 @@
+import { BorderBottom } from "@mui/icons-material";
 import {
   AutocompleteRenderInputParams,
   SxProps,
@@ -18,7 +19,7 @@ function CustomInputWithStyle({
   ...props
 }: {
   label: string;
-  onChange?: (...event: any[]) => void;
+  onChange: (...event: any[]) => void;
   propsError: FieldError | undefined;
   params?: AutocompleteRenderInputParams;
 
@@ -53,6 +54,7 @@ function CustomInputWithStyle({
         {...params}
         InputLabelProps={{
           shrink: true,
+
           sx: {
             color: "#324356",
             marginLeft:
@@ -92,7 +94,6 @@ function CustomInputWithStyle({
           },
           "& label.Mui-focused": {
             color: propsError ? "#ff5f59" : "#324356",
-            borderBottomColor: "white", // Semi-transparent underline
           },
 
           "& .MuiInputBase-root": {
@@ -101,14 +102,15 @@ function CustomInputWithStyle({
             border: errors().length ? "2px solid #ff5f59" : "3px solid #F4F4F4",
             borderRadius: "10px",
             "&:before": {
-              borderBottom: "none",
+              content: "none",
             },
             "&:after": {
-              borderBottom: "none",
+              content: "none",
             },
             "&:hover": {
               backgroundColor: "white",
-              borderBottom: errors()[0] ? "2px solid #ff5f59" : "none", // Remove underline on hover
+
+              borderBottom: errors()[0] ? "2px solid #ff5f59" : "none",
             },
           },
 
@@ -117,7 +119,13 @@ function CustomInputWithStyle({
         onChange={onChange}
         label={label}
         autoComplete={"false"}
-        helperText={propsError ? <>{errors()[0]}</> : ""}
+        helperText={
+          propsError && props?.InputProps?.type !== "file" ? (
+            <>{errors()[0]}</>
+          ) : (
+            ""
+          )
+        }
         FormHelperTextProps={{
           sx: {
             maxHeight: "2px",

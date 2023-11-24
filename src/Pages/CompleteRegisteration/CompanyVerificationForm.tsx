@@ -31,10 +31,9 @@ function CompanyVerificationForm({ control }: any) {
               <AutoCompleteController
                 options={Languages}
                 disableClearable
-                name="languages"
+                name="lang"
                 control={control}
                 label={""}
-                //   InputLabelProps={{ shrink: true, sx: { display: "none" } }}
                 sx={{
                   "& .MuiInputBase-root": {
                     background: "white",
@@ -58,7 +57,7 @@ function CompanyVerificationForm({ control }: any) {
         sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your address "
-        name="address"
+        name="company_address"
         label="ADDRESS"
       />
       <InputController
@@ -66,19 +65,19 @@ function CompanyVerificationForm({ control }: any) {
         sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your business email"
-        name="business_email"
+        name="company_business_email"
         label="BUSINESS EMAIL"
       />
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
         <AutoCompleteController
-          name="country"
+          name="company_country_id"
           control={control}
           label={"COUNTRY"}
           sx={{ width: "49%" }}
           options={countries}
         />
         <AutoCompleteController
-          name="city"
+          name="company_city_id"
           control={control}
           label={"CITY"}
           sx={{ width: "49%" }}
@@ -86,7 +85,7 @@ function CompanyVerificationForm({ control }: any) {
         />
       </Box>
       <InputController
-        name="phone_number"
+        name="company_phone"
         sx={{ width: "49%" }}
         control={control}
         InputProps={{
@@ -115,7 +114,7 @@ function CompanyVerificationForm({ control }: any) {
         placeholder="Enter Your Phone Number"
       />{" "}
       <InputController
-        name="phone_number"
+        name="company_phone"
         sx={{ width: "49%" }}
         control={control}
         InputProps={{

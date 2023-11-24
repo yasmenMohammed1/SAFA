@@ -16,7 +16,7 @@ function TellUsMoreForm({ control }: any) {
         fullWidth
         sx={{ mb: 3 }}
         control={control}
-        name="full_name"
+        name="user_full_name"
         placeholder="Enter Your Full Name"
         label="FULL NAME"
       />
@@ -25,19 +25,19 @@ function TellUsMoreForm({ control }: any) {
         sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your business email"
-        name="business_email"
+        name="company_business_email"
         label="BUSINESS EMAIL"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
         <AutoCompleteController
-          name="countries"
+          name="company_country_id"
           control={control}
           label={"COUNTRY"}
           sx={{ width: "49%" }}
           options={countries}
         />
         <InputController
-          name="phone_number"
+          name="user_phone"
           sx={{ width: "49%" }}
           control={control}
           InputProps={{
@@ -67,7 +67,7 @@ function TellUsMoreForm({ control }: any) {
         />
       </Box>
       <InputController
-        name="password"
+        name="user_password"
         control={control}
         fullWidth
         label={"PASSWORD "}
@@ -75,7 +75,7 @@ function TellUsMoreForm({ control }: any) {
         sx={{ mb: 3 }}
       />
       <InputController
-        name="confirm_password"
+        name="user_password_confirmation"
         control={control}
         fullWidth
         label={"REPEAT PASSWORD"}

@@ -13,10 +13,6 @@ export function Btn({
     <Button
       size="large"
       sx={{
-        backgroundColor: "#1777FB",
-        ":hover": {
-          backgroundColor: "#1777FB",
-        },
         ...sx,
       }}
       {...props}

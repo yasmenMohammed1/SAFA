@@ -1,17 +1,15 @@
 import { Box } from "@mui/material";
 import Btn from "./Btn";
 import { stepsNextActions } from "../Constents/NextStepActions";
-import { UseFormTrigger } from "react-hook-form";
-import { CompanyVerification } from "../Constents/Interfaces/CompanyVerification";
-import { ImageUpload } from "../Constents/Interfaces/ImageUpload";
-import { TellUsMore } from "../Constents/Interfaces/TellUsMoreInterface";
 
 function FormFooter({
   step,
   next,
   prev,
+  isLoading,
 }: {
   step: number;
+  isLoading: boolean;
   next: () => void;
   prev: () => void;
 }) {
@@ -23,14 +21,19 @@ function FormFooter({
         width: "100%",
         bgcolor: "#f4f4f4",
         justifyContent: step ? "end" : "space-between",
-        gap: 4,
+        gap: 2,
       }}
     >
       {step !== 4 && step ? (
         <Btn
           isLoading={false}
           name="backward-btn"
-          sx={{ width: "20%", color: "white" }}
+          sx={{
+            width: "20%",
+            color: "grey",
+            backgroundColor: "#EAE8E9",
+            "&:hover": { backgroundColor: "#EAE8E9" },
+          }}
           disabled={step === 0}
           onClick={() => {
             prev();
@@ -51,13 +54,20 @@ function FormFooter({
         ""
       )}
       <Btn
-        sx={{ width: "30%", color: "white" }}
-        isLoading={false}
+        sx={{
+          width: "30%",
+          color: "white",
+          backgroundColor: "#1777FB",
+          ":hover": {
+            backgroundColor: "#1777FB",
+          },
+        }}
+        isLoading={isLoading}
         name="proceed"
-        disabled={step === 3}
         onClick={() => {
-          next();
-          console.log(step);
+          if (step < 4) {
+            next();
+          }
         }}
       >
         {stepsNextActions[step]}

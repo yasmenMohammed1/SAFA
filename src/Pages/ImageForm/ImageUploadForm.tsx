@@ -1,11 +1,11 @@
-import { Button, Box, Avatar, Typography } from "@mui/material";
-import InputController from "../../Shared/Components/input-controller";
+import { Box, Avatar, Typography } from "@mui/material";
 import "../../Shared/Styles/form.css";
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Control, FieldErrors } from "react-hook-form";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 
 import { ImageUpload } from "../../Shared/Constents/Interfaces/ImageUpload";
+
 function ImageUploadForm({
   control,
   errors,
@@ -26,7 +26,6 @@ function ImageUploadForm({
           position: "relative",
         }}
       >
-        {" "}
         <AddCircleIcon
           sx={{
             position: "absolute",
@@ -54,37 +53,36 @@ function ImageUploadForm({
           }}
         >
           <PhotoSizeSelectActualIcon fontSize={"large"} />
-          <InputController
-            label="upload"
-            name="picture"
+          <Controller
+            name="img"
             control={control}
-            InputProps={{
-              type: "file",
-              sx: {
-                clip: "rect(0 0 0 0)",
-                clipPath: "inset(50%)",
-                height: 1,
-                overflow: "hidden",
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                whiteSpace: "nowrap",
-                width: 1,
-              },
+            render={(props) => {
+              return (
+                <input
+                  className="input"
+                  title="picture"
+                  type="file"
+                  name="picture"
+                  onChange={(event) => {
+                    return props.field.onChange(event.target.files);
+                  }}
+                />
+              );
             }}
           />
         </Avatar>
       </Box>
+
       <Typography
         sx={{
           fontSize: 14,
           color: "#ff5f59",
           textAlign: "center",
-          paddingTop: 3,
-          paddingBottom: 3,
+          paddingTop: "2%",
+          paddingBottom: "1%",
         }}
       >
-        {errors.picture?.message}
+        {errors.img?.message}
       </Typography>
       <Typography
         sx={{

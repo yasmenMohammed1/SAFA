@@ -1,9 +1,17 @@
 import * as yup from "yup";
 export const tellUsMoreSchema = yup.object().shape({
-  full_name: yup.string().required("Full Nme Is Required"),
-  business_email: yup.string().email().required("Business Email Is Required"),
-  phone_number: yup.string().required("Phone Number Is Required"),
-  password: yup
+  user_full_name: yup.string().required("Full Nme Is Required"),
+  company_business_email: yup
+    .string()
+    .email()
+    .required("Business Email Is Required"),
+  user_phone: yup.string().required("Phone Number Is Required"),
+  company_country_id: yup.object({
+    code: yup.string().required("Country Is Required"),
+    label: yup.string().required("Country Is Required"),
+    phone: yup.string().required("Country Is Required"),
+  }),
+  user_password: yup
     .string()
     .min(8, { length: "Password too short" })
     .matches(/\d+/, { message: { number: "Password no number" } })
@@ -18,8 +26,8 @@ export const tellUsMoreSchema = yup.object().shape({
       (value: any) => !/\s+/.test(value)
     )
     .required({ required: "password is required" }),
-  confirm_password: yup
+  user_password_confirmation: yup
     .string()
-    .oneOf([yup.ref("password")], "Passwords must match")
+    .oneOf([yup.ref("user_password")], "Passwords must match")
     .required("Confirm Password is required"),
 });

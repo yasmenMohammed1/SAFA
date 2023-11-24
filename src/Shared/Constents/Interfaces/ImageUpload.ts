@@ -1,3 +1,3 @@
 export interface ImageUpload {
-  picture: FileList;
+  img: FileList;
 }
