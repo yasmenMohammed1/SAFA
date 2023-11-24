@@ -1,6 +1,7 @@
-import { TextField, TextFieldProps } from "@mui/material";
-
+import { SxProps, TextField, TextFieldProps } from "@mui/material";
 import { Controller, Control } from "react-hook-form";
+import "./input.css";
+import CustomInputWithStyle from "./CustomInputWithStype";
 
 type InputControllerProps = {
   label: string;
@@ -11,8 +12,10 @@ function InputController({
   control,
   name,
   label,
+  sx,
   ...props
 }: InputControllerProps &
+  Omit<SxProps, ""> &
   Omit<
     TextFieldProps,
     | "multiline"
@@ -28,22 +31,17 @@ function InputController({
       defaultValue=""
       name={name}
       render={({
-        field: { onChange, value, ...otherRenderProps },
+        field: { ref, onChange, value, ...otherRenderProps },
         fieldState: { error },
       }) => {
         return (
-          <TextField
-            onChange={(e) => onChange(e.target.value)}
+          <CustomInputWithStyle
             label={label}
-            helperText={error?.message}
-            sx={{ padding: "0", margin: "0" }}
-            error={Boolean(error)}
-            value={value === null ? "" : value}
+            onChange={onChange}
+            propsError={error}
+            value={value}
+            sx={sx}
             {...otherRenderProps}
-            {...props}
-            InputLabelProps={{
-              shrink: true,
-            }}
             {...props}
           />
         );
