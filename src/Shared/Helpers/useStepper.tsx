@@ -6,6 +6,7 @@ import { steps } from "../Constents/StepsArray";
 import { ImageUpload } from "../Constents/Interfaces/ImageUpload";
 import { http } from "../http/http";
 import { useState } from "react";
+import { ObjectSchema } from "yup";
 
 const sendValues = async (values: any) => {
   await http.post("https://id.safav2.io.safavisa.com/register", values);
@@ -29,7 +30,9 @@ function useStepper(step: number, setStep: any) {
       resolver:
         step < 3
           ? yupResolver<CompanyVerification | TellUsMore | ImageUpload>(
-              steps[step].schema as any
+              steps[step].schema as ObjectSchema<
+                CompanyVerification | TellUsMore | ImageUpload
+              >
             )
           : undefined,
     });

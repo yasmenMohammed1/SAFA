@@ -6,8 +6,10 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import { useState } from "react";
 import "./../../Shared/Styles/form.css";
+import { TellUsMore } from "../../Shared/Constents/Interfaces/TellUsMoreInterface";
+import { Control } from "react-hook-form";
 
-function TellUsMoreForm({ control }: any) {
+function TellUsMoreForm({ control }: { control: Control<TellUsMore> }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPasswor, setShowConfirmPassword] = useState(false);
 

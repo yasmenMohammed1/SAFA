@@ -4,8 +4,14 @@ import AutoCompleteController from "../../Shared/Components/AutoCompleteControll
 import { countries } from "../../Shared/Constents/Countries";
 import { Languages } from "../../Shared/Constents/Languages";
 import "./../../Shared/Styles/form.css";
+import { Control } from "react-hook-form";
+import { CompanyVerification } from "../../Shared/Constents/Interfaces/CompanyVerification";
 
-function CompanyVerificationForm({ control }: any) {
+function CompanyVerificationForm({
+  control,
+}: {
+  control: Control<CompanyVerification>;
+}) {
   return (
     <form className="form">
       <Typography
