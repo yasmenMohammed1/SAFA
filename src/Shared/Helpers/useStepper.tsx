@@ -55,7 +55,7 @@ function useStepper(step: number, setStep: any) {
   const errors = formState.errors;
 
   const component = steps[step].component({
-    email: getValues("company_business_email"),
+    email: getValues("user_email"),
     handleSendEmail: handleSendEmail,
 
     control: control as Control<CompanyVerification> &

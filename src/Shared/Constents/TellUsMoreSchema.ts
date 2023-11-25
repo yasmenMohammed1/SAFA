@@ -1,7 +1,7 @@
 import * as yup from "yup";
 export const tellUsMoreSchema = yup.object().shape({
   user_full_name: yup.string().required("Full Nme Is Required"),
-  company_business_email: yup
+  user_email: yup
     .string()
     .email("Enter A valid Email")
     .required("Business Email Is Required"),

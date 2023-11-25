@@ -24,7 +24,7 @@ function TellUsMoreForm({ control }: any) {
         fullWidth
         control={control}
         placeholder="Enter Your business email"
-        name="company_business_email"
+        name="user_email"
         label="BUSINESS EMAIL"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
