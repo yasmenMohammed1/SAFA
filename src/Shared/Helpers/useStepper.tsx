@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Control, useForm } from "react-hook-form";
+import { Control, useForm, FieldErrors } from "react-hook-form";
 import { CompanyVerification } from "../Constents/Interfaces/CompanyVerification";
 import { TellUsMore } from "../Constents/Interfaces/TellUsMoreInterface";
 import { steps } from "../Constents/StepsArray";
@@ -55,7 +55,7 @@ function useStepper(step: number, setStep: any) {
   const errors = formState.errors;
 
   const component = steps[step].component({
-    email: getValues("user_phone"),
+    email: getValues("company_business_email"),
     handleSendEmail: handleSendEmail,
 
     control: control as Control<CompanyVerification> &
