@@ -14,11 +14,13 @@ function CustomInputWithStyle({
   onChange,
   propsError,
   value,
+  isInputAdornment,
   sx,
   params,
   ...props
 }: {
   label: string;
+  isInputAdornment?: boolean;
   onChange: (...event: any[]) => void;
   propsError: FieldError | undefined;
   params?: AutocompleteRenderInputParams;
@@ -71,6 +73,9 @@ function CustomInputWithStyle({
           "& .Mui-error": {
             color: "#ff5f59",
           },
+          height: matches ? "50px" : "35px",
+          maxHeight: matches ? "50px" : "35px",
+          my: isInputAdornment ? 0 : 2,
 
           "& ::placeholder": {
             fontSize: "12px",
@@ -103,9 +108,12 @@ function CustomInputWithStyle({
             borderRadius: "10px",
             "&:before": {
               content: "none",
+              //  borderBottom: "3px solid  #F4F4F4 !important",
             },
+
             "&:after": {
-              content: "none",
+              //content: "none",
+              borderBottom: "3px solid  #F4F4F4 !important",
             },
             "&:hover": {
               backgroundColor: "white",

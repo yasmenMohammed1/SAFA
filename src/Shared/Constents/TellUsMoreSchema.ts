@@ -3,14 +3,16 @@ export const tellUsMoreSchema = yup.object().shape({
   user_full_name: yup.string().required("Full Nme Is Required"),
   company_business_email: yup
     .string()
-    .email()
+    .email("Enter A valid Email")
     .required("Business Email Is Required"),
   user_phone: yup.string().required("Phone Number Is Required"),
-  company_country_id: yup.object({
-    code: yup.string().required("Country Is Required"),
-    label: yup.string().required("Country Is Required"),
-    phone: yup.string().required("Country Is Required"),
-  }),
+  company_country_id: yup
+    .object({
+      code: yup.string().required("Country Is Required"),
+      label: yup.string().required("Country Is Required"),
+      phone: yup.string().required("Country Is Required"),
+    })
+    .typeError("Enter a valid Country"),
   user_password: yup
     .string()
     .min(8, { length: "Password too short" })

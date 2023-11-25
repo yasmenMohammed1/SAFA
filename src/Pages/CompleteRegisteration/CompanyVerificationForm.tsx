@@ -22,7 +22,6 @@ function CompanyVerificationForm({ control }: any) {
       </Typography>
       <InputController
         fullWidth
-        sx={{ mb: 3 }}
         control={control}
         name="company_name"
         InputProps={{
@@ -32,6 +31,7 @@ function CompanyVerificationForm({ control }: any) {
                 options={Languages}
                 disableClearable
                 name="lang"
+                isInputAdornment={true}
                 control={control}
                 label={""}
                 sx={{
@@ -54,7 +54,6 @@ function CompanyVerificationForm({ control }: any) {
       />
       <InputController
         fullWidth
-        sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your address "
         name="company_address"
@@ -62,13 +61,14 @@ function CompanyVerificationForm({ control }: any) {
       />
       <InputController
         fullWidth
-        sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your business email"
         name="company_business_email"
         label="BUSINESS EMAIL"
       />
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", gap: 1, my: 2 }}
+      >
         <AutoCompleteController
           name="company_country_id"
           control={control}
@@ -84,42 +84,15 @@ function CompanyVerificationForm({ control }: any) {
           options={countries}
         />
       </Box>
-      <InputController
-        name="company_phone"
-        sx={{ width: "49%" }}
-        control={control}
-        InputProps={{
-          startAdornment: (
-            <Box
-              sx={{
-                text: "center",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "auto",
-                padding: 0,
-                width: "20%",
-                height: "100%",
-                position: "absolute",
-                left: 0,
-
-                borderRight: "1px solid #F4F4F4", // Add this line for the border
-              }}
-            >
-              +20
-            </Box>
-          ),
-        }}
-        label={"PHONE NUMBER"}
-        placeholder="Enter Your Phone Number"
-      />{" "}
-      <InputController
-        name="company_phone"
-        sx={{ width: "49%" }}
-        control={control}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", gap: 1, my: 2 }}
+      >
+        <InputController
+          name="company_phone"
+          sx={{ width: "49%" }}
+          control={control}
+          InputProps={{
+            startAdornment: (
               <Box
                 sx={{
                   text: "center",
@@ -138,12 +111,43 @@ function CompanyVerificationForm({ control }: any) {
               >
                 +20
               </Box>
-            </InputAdornment>
-          ),
-        }}
-        label={"PHONE NUMBER"}
-        placeholder="Enter Your Phone Number"
-      />
+            ),
+          }}
+          label={"PHONE NUMBER"}
+          placeholder="Enter Your Phone Number"
+        />{" "}
+        <InputController
+          name="company_phone"
+          sx={{ width: "49%" }}
+          control={control}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Box
+                  sx={{
+                    text: "center",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "auto",
+                    padding: 0,
+                    width: "20%",
+                    height: "100%",
+                    position: "absolute",
+                    left: 0,
+
+                    borderRight: "1px solid #F4F4F4", // Add this line for the border
+                  }}
+                >
+                  +20
+                </Box>
+              </InputAdornment>
+            ),
+          }}
+          label={"PHONE NUMBER"}
+          placeholder="Enter Your Phone Number"
+        />
+      </Box>
     </form>
   );
 }

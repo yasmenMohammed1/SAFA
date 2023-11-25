@@ -7,11 +7,13 @@ type Option = { label: string };
 type AutoCompleteControllerProps = {
   label: string;
   options: Array<any>;
+  isInputAdornment?: boolean;
   name: string;
   control: Control<any, any>;
 };
 function AutoCompleteController({
   control,
+  isInputAdornment,
   options,
   name,
   label,
@@ -39,6 +41,7 @@ function AutoCompleteController({
               onChange={(e) => onChange(e)}
               label={label}
               params={params}
+              isInputAdornment
               value={value}
               propsError={error}
             />

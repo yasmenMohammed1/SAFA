@@ -9,12 +9,12 @@ import "./../../Shared/Styles/form.css";
 
 function TellUsMoreForm({ control }: any) {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPasswor, setShowConfirmPassword] = useState(false);
 
   return (
     <form className="form">
       <InputController
         fullWidth
-        sx={{ mb: 3 }}
         control={control}
         name="user_full_name"
         placeholder="Enter Your Full Name"
@@ -22,18 +22,17 @@ function TellUsMoreForm({ control }: any) {
       />
       <InputController
         fullWidth
-        sx={{ mb: 3 }}
         control={control}
         placeholder="Enter Your business email"
         name="company_business_email"
         label="BUSINESS EMAIL"
       />
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <AutoCompleteController
           name="company_country_id"
           control={control}
           label={"COUNTRY"}
-          sx={{ width: "49%" }}
+          sx={{ width: "49%", my: 2 }}
           options={countries}
         />
         <InputController
@@ -55,7 +54,7 @@ function TellUsMoreForm({ control }: any) {
                   position: "absolute",
                   left: 0,
 
-                  borderRight: "1px solid #F4F4F4", // Add this line for the border
+                  borderRight: "1px solid #F4F4F4",
                 }}
               >
                 +20
@@ -72,15 +71,6 @@ function TellUsMoreForm({ control }: any) {
         fullWidth
         label={"PASSWORD "}
         placeholder="Choose a password"
-        sx={{ mb: 3 }}
-      />
-      <InputController
-        name="user_password_confirmation"
-        control={control}
-        fullWidth
-        label={"REPEAT PASSWORD"}
-        placeholder="Repeat your password"
-        sx={{ mb: 3 }}
         InputProps={{
           type: showPassword ? "text" : "password",
           endAdornment: (
@@ -105,6 +95,40 @@ function TellUsMoreForm({ control }: any) {
               }}
             >
               {showPassword ? <VisibilityOffIcon /> : <Visibility />}
+            </Box>
+          ),
+        }}
+      />
+      <InputController
+        name="user_password_confirmation"
+        control={control}
+        fullWidth
+        label={"REPEAT PASSWORD"}
+        placeholder="Repeat your password"
+        InputProps={{
+          type: showConfirmPasswor ? "text" : "password",
+          endAdornment: (
+            <Box
+              sx={{
+                cursor: "pointer",
+                text: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "auto",
+                padding: 0,
+                width: "20%",
+                height: "100%",
+                position: "absolute",
+                right: 0,
+                color: "black",
+                borderRight: "1px solid #F4F4F4",
+              }}
+              onClick={() => {
+                setShowConfirmPassword(!showConfirmPasswor);
+              }}
+            >
+              {showConfirmPasswor ? <VisibilityOffIcon /> : <Visibility />}
             </Box>
           ),
         }}
