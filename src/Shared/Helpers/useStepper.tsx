@@ -9,7 +9,7 @@ import { useState } from "react";
 import { ObjectSchema } from "yup";
 
 const sendValues = async (values: any) => {
-  await http.post("https://id.safav2.io.safavisa.com/register", values);
+  await http.post(process.env.PUBLIC_URL, values);
 };
 
 function useStepper(step: number, setStep: any) {
